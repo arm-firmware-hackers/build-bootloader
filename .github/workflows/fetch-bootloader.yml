@@ -18,7 +18,7 @@ jobs:
 
       - name: 🚀 Bash-Skript ausführen
         run: |
-          bash update_rpi_firmware.sh
+          bash build.sh
 
       - name: 📤 Änderungen committen (falls vorhanden)
         run: |
