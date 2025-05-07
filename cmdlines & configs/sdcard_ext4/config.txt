@@ -1,0 +1,16 @@
+# config.txt für SD-Karten-Boot mit ext4 ohne initramfs
+
+# Standardwerte beibehalten
+disable_overscan=1
+hdmi_safe=1
+arm_64bit=1
+
+# Bootloader-Einstellungen
+boot_delay=0
+bootfile=kernel8.img
+
+# Serieller Konsolenzugriff aktivieren (optional)
+enable_uart=1
+
+# Keine initramfs-Automatik
+auto_initramfs=0

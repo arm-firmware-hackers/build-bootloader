@@ -1,0 +1,1 @@
+  console=serial0,115200 root=/dev/ram0 init=/init
