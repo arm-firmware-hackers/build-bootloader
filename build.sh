@@ -2,9 +2,6 @@
 
 echo "Bootloader - Builder started !..."
 
-#!/bin/bash
-
-set -e
 
 # Ziel-Verzeichnis
 BASE_DIR="rpi_firmware"
@@ -14,12 +11,12 @@ cd "$BASE_DIR"
 # GitHub-RAW-Basis für Dateien (main branch)
 BASE_URL="https://raw.githubusercontent.com/raspberrypi/firmware/master/boot"
 
-# Funktion zum Herunterladen von Dateien
+# Funktion zum Herunterladen von Dateien mit wget
 download_file() {
     local url=$1
     local dest=$2
     echo "-> Downloading $url"
-    curl -fsSL "$url" -o "$dest"
+    wget -q --show-progress "$url" -O "$dest"
 }
 
 # Funktion zum Herunterladen von Ordnern wie overlays/
