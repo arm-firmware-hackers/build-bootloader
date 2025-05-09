@@ -19,19 +19,20 @@ jobs:
       - name: 🚀 Bash-Skript ausführen
         run: |
           bash build.sh
-          
-      - name: Set up Git
+
+      - name: Git konfigurieren
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Commit and push changes
+      - name: Änderungen committen und pushen
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }} # Muss in Repository-Secrets gesetzt sein
         run: |
           git add rpi_firmware/
           if ! git diff --cached --quiet; then
-          git commit -m "🔄 Auto-Update RPi firmware files"
-          git push https://x-access-token:${GH_PAT}@github.com/arm-firmware-hackers/build-bootloader.git HEAD:main
+            git commit -m "🔄 Auto-Update RPi firmware files"
+            git push https://x-access-token:${GH_PAT}@github.com/arm-firmware-hackers/build-bootloader.git HEAD:main
           else
             echo "✅ Keine Änderungen – nichts zu committen."
+          fi
