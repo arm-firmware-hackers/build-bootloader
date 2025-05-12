@@ -25,7 +25,6 @@ jobs:
       - name: Prepare target directories
         run: |
           mkdir -p rpi_firmware/rpi3 rpi_firmware/rpi4 rpi_firmware/rpi5
-          rm -rf rpi_firmware/rpi3/* rpi_firmware/rpi4/* rpi_firmware/rpi5/*
 
       - name: Copy RPi3 files
         run: |
@@ -40,8 +39,8 @@ jobs:
             bcm2710-rpi-3-b.dtb \
             "fixup copy.dat" \
             "start copy.elf" \
-            -t ../../../rpi_firmware/rpi3/
-          cp -rv overlays ../../../rpi_firmware/rpi3/
+            ../../rpi_firmware/rpi3/
+          cp -rv overlays ../../rpi_firmware/rpi3/
 
       - name: Copy RPi4 files
         run: |
@@ -53,8 +52,8 @@ jobs:
             start4.elf start4cd.elf start4db.elf start4x.elf \
             kernel8.img \
             bcm2711-rpi-4-b.dtb \
-            -t ../../../rpi_firmware/rpi4/
-          cp -rv overlays ../../../rpi_firmware/rpi4/
+            ../../rpi_firmware/rpi4/
+          cp -rv overlays ../../rpi_firmware/rpi4/
 
       - name: Copy RPi5 files
         run: |
@@ -68,8 +67,8 @@ jobs:
             Image \
             Image.gz \
             bcm2712-rpi-5-b.dtb \
-            -t ../../../rpi_firmware/rpi5/
-          cp -rv overlays ../../../rpi_firmware/rpi5/
+            ../../rpi_firmware/rpi5/
+          cp -rv overlays ../../rpi_firmware/rpi5/
 
       - name: Commit and Push if changes
         run: |
