@@ -1,12 +1,8 @@
-name: Run build.sh
+name: Run build.sh daily at 13:00
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: '0 13 * * *'  # Jeden Tag um 13:00 Uhr UTC
   workflow_dispatch:  # Ermöglicht manuelles Auslösen
 
 jobs:
