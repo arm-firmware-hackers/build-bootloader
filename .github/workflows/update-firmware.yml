@@ -29,7 +29,8 @@ jobs:
       - name: Copy RPi3 files
         run: |
           cd firmware/boot
-          cp -v \
+          mkdir -p ../../rpi_firmware/rpi3
+          for file in \
             bootcode.bin \
             cmdline.txt \
             config.txt \
@@ -38,9 +39,19 @@ jobs:
             kernel8.img \
             bcm2710-rpi-3-b.dtb \
             "fixup copy.dat" \
-            "start copy.elf" \
-            ../../rpi_firmware/rpi3/
-          cp -rv overlays ../../rpi_firmware/rpi3/
+            "start copy.elf"
+          do
+            if [ -f "$file" ]; then
+              echo "Copying $file"
+              cp -v "$file" ../../rpi_firmware/rpi3/
+            else
+              echo "Skipping missing file: $file"
+            fi
+          done
+          if [ -d overlays ]; then
+            cp -rv overlays ../../rpi_firmware/rpi3/
+          fi
+
 
       - name: Copy RPi4 files
         run: |
